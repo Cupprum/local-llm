@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+set -u
+set -o pipefail
+
+echo ">>> Starting llama.cpp cli..."
+
+SCRIPT_DIR="/home/x42/PP/local-llm"
+cd "$SCRIPT_DIR"
+
+echo " - Loading env vars..."
+set -a
+[ -f .env ] && source .env
+set +a
+
+[ ! -d ../llama.cpp/build/bin ] && echo "Error: llama.cpp not built" && exit 1
+
+echo " - Starting model accessible in cli..."
+../llama.cpp/build/bin/llama-cli \
+  --hf-repo "$LOCAL_LLM_MODEL" \
+  --gpu-layers 99 \
+  --flash-attn on \
+  --ctx-size 128000 \
+  --cache-type-k q4_0 \
+  --cache-type-v q4_0
