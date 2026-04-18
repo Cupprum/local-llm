@@ -45,3 +45,5 @@ llm-cli # Run llama-cli
 llm-ui # Expose llama.cpp web ui
 ```
 Configure model in `.env` file as `LOCAL_LLM_MODEL=ggml-org/gemma-4-E4B-it-GGUF:Q4_K_M`.
+
+**List installed models:** `ls ~/.cache/huggingface/hub/`
