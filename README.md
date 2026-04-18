@@ -12,6 +12,16 @@ sudo dnf update
 sudo dnf install openssl-devel  vulkan-loader-devel vulkan-headers spirv-headers-devel glslc cmake clang git vulkan-tools
 ```
 
+**Make scripts accessible:**
+
+Link these files to `~/bin` folder:
+```
+cd ~/bin
+ln -s ~/PP/local-llm/llm-server llm-server
+ln -s ~/PP/local-llm/llm-ui llm-ui
+ln -s ~/PP/local-llm/llm-cli llm-cli
+```
+
 **Build:**
 ```
 cd llama.cpp
@@ -35,11 +45,3 @@ llm-cli # Run llama-cli
 llm-ui # Expose llama.cpp web ui
 ```
 Configure model in `.env` file as `LOCAL_LLM_MODEL=ggml-org/gemma-4-E4B-it-GGUF:Q4_K_M`.
-
-Link these files to `~/bin` folder:
-```
-cd ~/bin
-ln -s ~/PP/local-llm/llm-server llm-server
-ln -s ~/PP/local-llm/llm-ui llm-ui
-ln -s ~/PP/local-llm/llm-cli llm-cli
-```
